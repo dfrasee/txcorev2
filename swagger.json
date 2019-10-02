@@ -1,0 +1,184 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "TxMarket API",
+    "description": "API Specification Doc."
+  },
+  "host": "45.77.249.133:4000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "BrokerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "paths": {
+    "/owner/get-owner-by-email": {
+      "x-swagger-router-controller": "owner",
+      "post": {
+        "description": "To get owner by email",
+        "summary": "To get owner by email",
+        "tags": [
+          "Owner"
+        ],
+        "security": [
+          {
+            "BrokerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "get_owner_by_email",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "e",
+            "type": "string",
+            "required": true,
+            "description": "Email"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "examples": {
+              "application/json": {
+                "status": "ok",
+                "owner": "5bade6bc97a2cd41a1444cc3",
+                "message": "Owner was created"
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/owner/get-data": {
+      "x-swagger-router-controller": "owner",
+      "get": {
+        "description": "To get owner by email",
+        "summary": "To get owner by email",
+        "tags": [
+          "Owner"
+        ],
+        "security": [
+          {
+            "BrokerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "get_owner_by_email_get",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "e",
+            "in": "query",
+            "description": "Email",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "examples": {
+              "application/json": {
+                "status": "ok",
+                "owner": {
+                },
+                "message": "Create missing deposit success"
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/owner/data/{email}": {
+      "x-swagger-router-controller": "owner",
+      "get": {
+        "description": "To get owner by email",
+        "summary": "To get owner by email",
+        "tags": [
+          "Owner"
+        ],
+        "security": [
+          {
+            "BrokerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "get_owner_by_email_with_path",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "Email"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "examples": {
+              "application/json": {
+                "status": "ok",
+                "message": "Withdrawal Request verified successfully",
+                "owner": {
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ErrorResponse": {
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
