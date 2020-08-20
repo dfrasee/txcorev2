@@ -12,7 +12,7 @@
   "dependencies": {
     "aws-sdk": "^2.513.0",
     "axios": "^0.18.0",
-    "bcrypt": "^3.0.2",
+    "bcrypt": "^5.0.0",
     "bitgo": "^4.42.0",
     "body-parser": "^1.18.3",
     "crypto": "^1.0.1",
